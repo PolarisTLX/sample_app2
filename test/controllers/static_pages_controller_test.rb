@@ -12,7 +12,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get home" do
-    get static_pages_home_url
+    # get static_pages_home_url
+    get root_url
     assert_response :success
     # this to check for HTTP status code "200 OK"
     assert_select "title", "Home | #{@common_title}"
