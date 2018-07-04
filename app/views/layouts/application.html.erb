@@ -12,6 +12,9 @@
   <body>
     <h1>Sample App2</h1>
     <h2><%= full_title(yield(:title)) %></h2>
+    <% flash.each do |message_type, message| %>
+      <div class="alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     <br/>
     <div>
