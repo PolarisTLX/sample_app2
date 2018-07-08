@@ -16,15 +16,15 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     first_page_of_users.each do |user|
     # User.paginate(page: 1, per_page: 5).each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
-      # not working:
-      # unless user == @admin
-      #   assert_select 'a[href=?]', user_path(user), text: 'delete'
-      # end
+      # not working: EDIT needed admin: true in users.yml in fixtures
+      unless user == @admin
+        assert_select 'a[href=?]', user_path(user), text: 'delete'
+      end
     end
-    # not working:
-    # assert_difference 'User.count', -1 do
-    #   delete user_path(@non_admin)
-    # end
+    # not working: EDIT needed admin: true in users.yml in fixtures
+    assert_difference 'User.count', -1 do
+      delete user_path(@non_admin)
+    end
   end
 
 
