@@ -41,7 +41,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   # testing scenario where user is in 2 different browsers:
   test "authenticated? should return false for a user with a nil digest" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember, '')
   end
 
   test "login with remembering" do
